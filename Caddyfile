@@ -1,0 +1,13 @@
+:6767 {
+    handle /api/user/* {
+        reverse_proxy user:80
+    }
+
+    handle /bkk/* {
+      reverse_proxy bkk:80
+    }
+
+    handle {
+        reverse_proxy bkk:80
+    }
+}
