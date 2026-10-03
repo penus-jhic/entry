@@ -3,11 +3,15 @@
         reverse_proxy user:80
     }
 
-    handle /bkk/* {
+    handle /bkk* {
       reverse_proxy bkk:80
     }
 
+    handle /ppdb* {
+      reverse_proxy ppdb:80
+    }
+
     handle {
-        reverse_proxy bkk:80
+      reverse_proxy ppdb:80
     }
 }
