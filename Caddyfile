@@ -1,17 +1,31 @@
 :6767 {
     handle /api/user/* {
-        reverse_proxy user:80
+      header X-Service "User"
+      reverse_proxy user:80
+    }
+
+    handle /api/* {
+      header X-Service "Lpbe"
+      reverse_proxy lpbe:80
+    }
+
+    handle /storage/* {
+      header X-Service "LpbeStorage"
+      reverse_proxy lpbe:80
     }
 
     handle /bkk* {
+      header X-Service "Bkk"
       reverse_proxy bkk:80
     }
 
     handle /ppdb* {
+      header X-Service "Ppdb"
       reverse_proxy ppdb:80
     }
 
     handle {
-      reverse_proxy ppdb:80
+      header X-Service "Lpfe"
+      reverse_proxy lpfe:80
     }
 }
