@@ -4,6 +4,11 @@
       reverse_proxy user:80
     }
 
+    handle /api/ai/* {
+      header X-Service "Ai"
+      reverse_proxy ai:3000
+    }
+
     handle /api/* {
       header X-Service "Lpbe"
       reverse_proxy lpbe:80
